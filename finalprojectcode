@@ -175,16 +175,16 @@ rent_df = pd.DataFrame(rent_data)
 fig, ax1 = plt.subplots(figsize=(12, 6))
 
 # Bar chart for Total Jobs
-ax1.bar(jobs_df['Borough'], jobs_df['Total_Jobs'], color='blue', label='Total Jobs')
+ax1.bar(jobs_df['Borough'], jobs_df['Total_Jobs'], label='Total Jobs', color = 'purple')
 ax1.set_xlabel('Borough')
 ax1.set_ylabel('Total Jobs')
-ax1.tick_params(axis='y'')
+ax1.tick_params(axis='y')
 
 # Line graph for Rent
 ax2 = ax1.twinx()
-ax2.plot(rent_df['Area'], rent_df['Rent_2020_21'], marker='o', linestyle='-', color='red', label='Rent 2020-21')
-ax2.set_ylabel('Rent 2020-21', color='red')
-ax2.tick_params(axis='y', labelcolor='red')
+ax2.plot(rent_df['Area'], rent_df['Rent_2020_21'], marker='o', linestyle='-', label='Rent', color = 'orange')
+ax2.set_ylabel('Rent')
+ax2.tick_params(axis='y')
 
 # Title and legend
 plt.title('Total Jobs and Rent Comparison')
