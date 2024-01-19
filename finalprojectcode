@@ -7,3 +7,11 @@ print(rent)
 
 jobs = pd.read_csv(r'C:/Users/maari/OneDrive/Documents/02DATA/sectorjobs.csv')
 print(jobs)
+
+# Plot time series
+plt.figure(figsize=(10, 6))
+plt.plot(rent['Area'], rent['2020-21'], marker='o', linestyle='-')
+plt.title('Time Series Plot of Average Temperature')
+plt.xlabel('Date')
+plt.ylabel('Average Temperature')
+plt.show()
