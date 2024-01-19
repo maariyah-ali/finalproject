@@ -17,6 +17,8 @@ plt.xlabel('Borough')
 plt.ylabel('Rent (weekly)')
 plt.show()
 
+
+
 ###GRAPH THAT SHOWS EMPLOYMENT OPPORTUNITIES PER SECTOR BROKEN DOWN BY BOROUGH
 bd_data = jobs[jobs['Borough'] == 'Barking and Dagenham']
 hackney_data = jobs[jobs['Borough'] == 'Hackney']
@@ -43,6 +45,8 @@ plt.xticks(rotation=90, ha='right')  # Rotate x-axis labels for better visibilit
 plt.legend()
 plt.show()
 
+
+
 ###SECTRO DATA BY BOROUGH (PART 1)
 pau_data = jobs[jobs['Sector'] == 'Primary & Utilities']
 manufacturing_data = jobs[jobs['Sector'] == 'Manufacturing']
@@ -51,8 +55,6 @@ wholesale_data = jobs[jobs['Sector'] == 'Wholesale']
 retail_data = jobs[jobs['Sector'] == 'Retail']
 aafsa_data = jobs[jobs['Sector'] == 'Accomodation and food service activities']
 iac_data = jobs[jobs['Sector'] == 'Information and Communication']
-
-
 
 # Plot the manufacturing data
 plt.figure(figsize=(12, 6))
@@ -66,13 +68,13 @@ plt.plot(aafsa_data['Borough'], aafsa_data['2020'])
 plt.plot(iac_data['Borough'], iac_data['2020'])
 
 
-
-
 plt.title('Sector Data by Borough (2020) - part1')
 plt.xlabel('Borough')
 plt.ylabel('2020 Data')
 plt.xticks(rotation=45, ha='right')  # Rotate x-axis labels for better visibility
 plt.show()
+
+
 
 
 ###SECTOR DATA BY BOROUGH (PART2)
@@ -99,4 +101,94 @@ plt.title('Sector Data by Borough (2020) - part2')
 plt.xlabel('Borough')
 plt.ylabel('2020 Data')
 plt.xticks(rotation=45, ha='right')  # Rotate x-axis labels for better visibility
+plt.show()
+
+
+
+###SECTOR DATA BY BOROUGH - BAR CHART
+bd_data = jobs[jobs['Borough'] == 'Barking and Dagenham']
+hackney_data = jobs[jobs['Borough'] == 'Hackney']
+havering_data = jobs[jobs['Borough'] == 'Havering']
+newham_data = jobs[jobs['Borough'] == 'Newham']
+redbridge_data = jobs[jobs['Borough'] == 'Redbridge']
+th_data = jobs[jobs['Borough'] == 'Tower Hamlets']
+wf_data = jobs[jobs['Borough'] == 'Waltham Forest']
+
+# Plot the data for Havering
+plt.figure(figsize=(16,10))
+
+plt.bar(bd_data['Sector'], bd_data['2020'], label = 'Barking and Dagenham')
+plt.bar(hackney_data['Sector'], hackney_data['2020'], label = 'Hackney')
+plt.bar(havering_data['Sector'], havering_data['2020'], label = 'Havering')
+plt.bar(newham_data['Sector'], havering_data['2020'], label = 'Newham')
+plt.bar(redbridge_data['Sector'], havering_data['2020'], label = 'Redbridge')
+plt.bar(th_data['Sector'], havering_data['2020'], label = 'Tower Hamlets')
+plt.bar(wf_data['Sector'], havering_data['2020'], label = 'Waltham Forest')
+
+plt.title('2020 Data in Havering by Sector')
+plt.xlabel('Sector')
+plt.ylabel('2020 Data - Employment Opportunities')
+plt.xticks(rotation=90, ha='right')  # Rotate x-axis labels for better visibility
+plt.legend()
+plt.show()
+
+
+
+
+###COMBINE BOTH GRAPHS ATTEMPT 1
+fig, ax1 = plt.subplots(figsize = (10,6))
+
+ax1.plot(rent['Area'], rent['2020-21'], marker = 'o', linestyle = '-')
+ax1.set_xlabel('Area')
+ax1.set_ylabel('Rent per week in 2020')
+
+ax2 = ax1.twinx()
+
+ax2.bar(jobs['Borough'], jobs['Sector' == 'Total'])
+ax2.set_ylabel('Total Employment opportunities in 2020')
+
+plt.legend(loc = 'upper left')
+
+plt.show()
+
+
+
+
+#COMBINE ALL DATA ATTEMPT 2
+# Jobs data
+jobs_data = {
+    'Borough': ['Barking and Dagenham', 'Hackney', 'Havering', 'Newham', 'Redbridge', 'Tower Hamlets', 'Waltham Forest'],
+    'Total_Jobs': [57700, 132600, 83650, 117500, 78500, 289900, 71800]
+}
+
+# Rent data
+rent_data = {
+    'Area': ['Barking and Dagenham', 'Hackney', 'Havering', 'Newham', 'Redbridge', 'Tower Hamlets', 'Waltham Forest'],
+    'Rent_2020_21': [97.02, 101.58, 100.62, 104.64, 108.8, 112.29, 104.72]
+}
+
+# Create DataFrame
+jobs_df = pd.DataFrame(jobs_data)
+rent_df = pd.DataFrame(rent_data)
+
+# Plotting
+fig, ax1 = plt.subplots(figsize=(12, 6))
+
+# Bar chart for Total Jobs
+ax1.bar(jobs_df['Borough'], jobs_df['Total_Jobs'], color='blue', label='Total Jobs')
+ax1.set_xlabel('Borough')
+ax1.set_ylabel('Total Jobs')
+ax1.tick_params(axis='y'')
+
+# Line graph for Rent
+ax2 = ax1.twinx()
+ax2.plot(rent_df['Area'], rent_df['Rent_2020_21'], marker='o', linestyle='-', color='red', label='Rent 2020-21')
+ax2.set_ylabel('Rent 2020-21', color='red')
+ax2.tick_params(axis='y', labelcolor='red')
+
+# Title and legend
+plt.title('Total Jobs and Rent Comparison')
+fig.tight_layout()
+fig.legend(loc='upper left', bbox_to_anchor=(0.8, 0.9))
+
 plt.show()
