@@ -42,3 +42,61 @@ plt.ylabel('2020 Data - Employment Opportunities')
 plt.xticks(rotation=90, ha='right')  # Rotate x-axis labels for better visibility
 plt.legend()
 plt.show()
+
+###SECTRO DATA BY BOROUGH (PART 1)
+pau_data = jobs[jobs['Sector'] == 'Primary & Utilities']
+manufacturing_data = jobs[jobs['Sector'] == 'Manufacturing']
+construction_data = jobs[jobs['Sector'] == 'Construction']
+wholesale_data = jobs[jobs['Sector'] == 'Wholesale']
+retail_data = jobs[jobs['Sector'] == 'Retail']
+aafsa_data = jobs[jobs['Sector'] == 'Accomodation and food service activities']
+iac_data = jobs[jobs['Sector'] == 'Information and Communication']
+
+
+
+# Plot the manufacturing data
+plt.figure(figsize=(12, 6))
+
+plt.plot(pau_data['Borough'], pau_data['2020'])
+plt.plot(manufacturing_data['Borough'], manufacturing_data['2020'])
+plt.plot(construction_data['Borough'], construction_data['2020'])
+plt.plot(wholesale_data['Borough'], wholesale_data['2020'])
+plt.plot(retail_data['Borough'], retail_data['2020'])
+plt.plot(aafsa_data['Borough'], aafsa_data['2020'])
+plt.plot(iac_data['Borough'], iac_data['2020'])
+
+
+
+
+plt.title('Sector Data by Borough (2020) - part1')
+plt.xlabel('Borough')
+plt.ylabel('2020 Data')
+plt.xticks(rotation=45, ha='right')  # Rotate x-axis labels for better visibility
+plt.show()
+
+
+###SECTOR DATA BY BOROUGH (PART2)
+faia_data = jobs[jobs['Sector'] == 'Financial and insurance activities']
+prof_data = jobs[jobs['Sector'] == 'Professional, Real Estate, Scientific and technical activities']
+admin_data = jobs[jobs['Sector'] == 'Administrative and support service activities']
+pad_data = jobs[jobs['Sector'] == 'Public Admin and defence']
+edu_data = jobs[jobs['Sector'] == 'Education']
+health_data = jobs[jobs['Sector'] == 'Health']
+aer_data = jobs[jobs['Sector'] == 'Arts, entertainment and recreation']
+other_data = jobs[jobs['Sector'] == 'Other services']
+
+
+plt.plot(faia_data['Borough'], faia_data['2020'])
+plt.plot(prof_data['Borough'], prof_data['2020'])
+plt.plot(admin_data['Borough'], admin_data['2020'])
+plt.plot(pad_data['Borough'], pad_data['2020'])
+plt.plot(edu_data['Borough'], edu_data['2020'])
+plt.plot(health_data['Borough'], health_data['2020'])
+plt.plot(aer_data['Borough'], aer_data['2020'])
+plt.plot(other_data['Borough'], other_data['2020'])
+
+plt.title('Sector Data by Borough (2020) - part2')
+plt.xlabel('Borough')
+plt.ylabel('2020 Data')
+plt.xticks(rotation=45, ha='right')  # Rotate x-axis labels for better visibility
+plt.show()
