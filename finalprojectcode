@@ -17,3 +17,28 @@ plt.xlabel('Borough')
 plt.ylabel('Rent (weekly)')
 plt.show()
 
+###GRAPH THAT SHOWS EMPLOYMENT OPPORTUNITIES PER SECTOR BROKEN DOWN BY BOROUGH
+bd_data = jobs[jobs['Borough'] == 'Barking and Dagenham']
+hackney_data = jobs[jobs['Borough'] == 'Hackney']
+havering_data = jobs[jobs['Borough'] == 'Havering']
+newham_data = jobs[jobs['Borough'] == 'Newham']
+redbridge_data = jobs[jobs['Borough'] == 'Redbridge']
+th_data = jobs[jobs['Borough'] == 'Tower Hamlets']
+wf_data = jobs[jobs['Borough'] == 'Waltham Forest']
+
+plt.figure(figsize=(16,10))
+
+plt.plot(bd_data['Sector'], bd_data['2020'], label = 'Barking and Dagenham')
+plt.plot(hackney_data['Sector'], hackney_data['2020'], label = 'Hackney')
+plt.plot(havering_data['Sector'], havering_data['2020'], label = 'Havering')
+plt.plot(newham_data['Sector'], newham_data['2020'], label = 'Newham')
+plt.plot(redbridge_data['Sector'], redbridge_data['2020'], label = 'Redbridge')
+plt.plot(th_data['Sector'], th_data['2020'], label = 'Tower Hamlets')
+plt.plot(wf_data['Sector'], wf_data['2020'], label = 'Waltham Forest')
+
+plt.title('Employment opportunities by Sector and Borough')
+plt.xlabel('Sector')
+plt.ylabel('2020 Data - Employment Opportunities')
+plt.xticks(rotation=90, ha='right')  # Rotate x-axis labels for better visibility
+plt.legend()
+plt.show()
