@@ -2,4 +2,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd 
 
+rent = pd.read_csv(r'C:/Users/maari/OneDrive/Documents/02DATA/rent.csv')
+print(rent)
 
+jobs = pd.read_csv(r'C:/Users/maari/OneDrive/Documents/02DATA/sectorjobs.csv')
+print(jobs)
