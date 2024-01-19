@@ -8,10 +8,12 @@ print(rent)
 jobs = pd.read_csv(r'C:/Users/maari/OneDrive/Documents/02DATA/sectorjobs.csv')
 print(jobs)
 
+
+###GPRAPH SHOWING THE 
 plt.figure(figsize=(10, 6))
 plt.plot(rent['Area'], rent['2020-21'], marker='o', linestyle='-')
-plt.title('Time Series Plot of Average Temperature')
-plt.xlabel('Date')
-plt.ylabel('Average Temperature')
+plt.title('Rent per week in Different Boroughs')
+plt.xlabel('Borough')
+plt.ylabel('Rent (weekly)')
 plt.show()
 
